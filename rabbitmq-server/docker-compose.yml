@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: "rabbitmq:3.9-management"  # Use the RabbitMQ image with the management plugin
+    container_name: rabbitmq_container
+    ports:
+      - "5672:5672"  # RabbitMQ default port for AMQP
+      - "15672:15672"  # RabbitMQ Management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: username  # Set your desired username
+      RABBITMQ_DEFAULT_PASS: secret  # Set your desired password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq  # Persist RabbitMQ data
+
+volumes:
+  rabbitmq_data:
